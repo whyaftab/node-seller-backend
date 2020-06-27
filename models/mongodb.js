@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 mongoose.connect(
-  "mongodb://localhost:27017/Tazweed",
+  "mongodb://localhost:27017/tazweed",
   { useNewUrlParser: true },
   (err) => {
     if (!err) {

@@ -1,4 +1,4 @@
-require("./models/mongodb");
+const mongoose = require("./models/mongodb");
 
 //Import the necessary packages
 const express = require("express");
@@ -6,9 +6,22 @@ var app = express();
 const path = require("path");
 const exphb = require("express-handlebars");
 const bodyparser = require("body-parser");
+var session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
+var flash = require("express-flash");
+const webAuth = require("./middleware/webauth");
 
 // const userController = require("./controllers/admin/userController");
 const adminAuthentication = require("./controllers/admin/authentication");
+
+app.use(
+  session({
+    secret: "1828968049",
+    resave: true,
+    saveUninitialized: false,
+    store: new MongoStore({ url: "mongodb://localhost:27017/tazweed" }),
+  })
+);
 
 app.use(
   bodyparser.urlencoded({
@@ -16,8 +29,11 @@ app.use(
   })
 );
 
+app.use(flash());
+
 //Create a welcome message and direct them to the main page
-app.get("/", (req, res) => {
+
+app.get("/", webAuth, (req, res) => {
   res.send(
     '<h2 style="font-family: Malgun Gothic; color: midnightblue ">Welcome to Edureka Node.js MongoDB Tutorial!!</h2>'
   );
