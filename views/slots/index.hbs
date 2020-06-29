@@ -1,0 +1,76 @@
+<div class="row">
+    <div class="col-md-6">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Slot</h3>
+            </div><!-- /.box-header -->
+            <!-- form start -->
+
+            {{#if error}}
+            <div class="alert alert-danger alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h5>{{error}}</h5>
+            </div>
+            {{/if}}
+            <form role="form" action="/admin/slot" method="POST">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label>Opening Time</label>
+                        <div class="bootstrap-timepicker">
+                            <div class="input-group">
+                                <input type="text" name="fromTime" value="{{slot.fromTime}}"
+                                    class="form-control timepicker" />
+                                <div class="input-group-addon">
+                                    <i class="fa fa-clock-o"></i>
+                                </div>
+                            </div><!-- /.input group -->
+                        </div>
+
+                    </div><!-- /.form group -->
+                    <div class="form-group">
+                        <label>Closing Time</label>
+                        <div class="bootstrap-timepicker">
+                            <div class="input-group">
+                                <input type="text" name="toTime" value="{{slot.toTime}}"
+                                    class="form-control timepicker" />
+                                <div class="input-group-addon">
+                                    <i class="fa fa-clock-o"></i>
+                                </div>
+                            </div><!-- /.input group -->
+                        </div>
+                    </div><!-- /.form group -->
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Day(s)</label>
+                        <select class="form-control select2" name="days" multiple="multiple"
+                            data-placeholder="Select a day">
+                            <option value="0">Monday</option>
+                            <option value="1">Tuesday</option>
+                            <option value="2">Wednesday</option>
+                            <option value="3">Thursday</option>
+                            <option value="4">Friday</option>
+                            <option value="5">Saturday</option>
+                            <option value="6">Sunday</option>
+                        </select>
+                    </div>
+
+                </div><!-- /.box-body -->
+                {{!-- {{#if error}}
+                <div class="alert alert-danger alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h5>{{error}}</h5>
+                </div>
+                {{/if}} --}}
+                {{#if success}}
+                <div class="alert alert-success alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h5>{{success}}</h5>
+                </div>
+                {{/if}}
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div><!-- /.box -->
+    </div>
+</div>

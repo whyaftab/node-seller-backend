@@ -16,3 +16,5 @@ mongoose.connect(
 
 //Connecting Node and MongoDB
 require("./user.model");
+require("./userSlot.model");
+require("./appointment.model");

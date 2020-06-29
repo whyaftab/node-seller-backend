@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="box">
+      <div class="box-header">
+        <h3 class="box-title">Responsive Hover Table</h3>
+        <div class="box-tools">
+          <div class="input-group" style="width: 150px;">
+          </div>
+        </div>
+      </div><!-- /.box-header -->
+
+      {{#if success}}
+      <div class="alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h5>{{success}}</h5>
+      </div>
+      {{/if}}
+      <div class="box-body table-responsive no-padding">
+        <table class="table table-hover">
+          <tr>
+            <th>User</th>
+            <th>Date</th>
+            <th>Status</th>
+          </tr>
+          <tr>
+            {{#each appointments}}
+            <td>{{_user.name}}</td>
+            <td>{{time}}</td>
+
+            {{#ifeq status 0}}
+            <td><a class="btn btn-primary" href="/admin/appointment/accept/{{_id}}" style="margin-right: 20px;">
+                Accept</a><a class="btn btn-danger" href="/admin/appointment/reject/{{_id}}"> Reject</a>
+            </td>
+            {{/ifeq}}
+
+            {{#ifeq status 1}}
+            <td><span class="label label-success">Approved</span></td>
+            {{/ifeq}}
+
+            {{#ifeq status 2}}
+            <td><span class="label label-danger">Rejected</span></td>
+            {{/ifeq}}
+            {{/each}}
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

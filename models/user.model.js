@@ -1,10 +1,6 @@
 const mongoose = require("mongoose");
 
 var userSchema = new mongoose.Schema({
-  id: {
-    type: String,
-    auto: true,
-  },
   name: {
     type: String,
     required: "This field is required",
@@ -25,6 +21,16 @@ var userSchema = new mongoose.Schema({
   token: {
     type: String,
     default: null,
+  },
+  _appointments: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Appointment",
+    },
+  ],
+  _slot: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "UserSlot",
   },
 });
 
