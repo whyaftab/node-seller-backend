@@ -46,8 +46,9 @@ router.post("/login", async (req, res) => {
         );
         if (passwordMatch) {
           req.session.user = doc;
-          req.session.save();
-          res.redirect("/login");
+          req.session.save(() => {
+            res.redirect("/");
+          });
         }
       }
     );
