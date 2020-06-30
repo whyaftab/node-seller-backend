@@ -1,9 +1,11 @@
 // In this file you can configure migrate-mongo
 
+const { database } = require("./keys");
+
 const config = {
   mongodb: {
     // TODO Change (or review) the url to your MongoDB:
-    url: "mongodb://localhost:27017",
+    url: database.url,
 
     // TODO Change this to your database name:
     databaseName: "tazweed",

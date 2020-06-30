@@ -26,13 +26,14 @@ const apiAuthenticationController = require("./controllers/api/authenticationCon
 const apiSellerController = require("./controllers/api/sellerController");
 const token = require("./lib/token");
 const loginAuth = require("./middleware/loginAuth");
+const { database } = require("./keys");
 
 app.use(
   session({
     secret: "1828968049",
     resave: true,
     saveUninitialized: false,
-    store: new MongoStore({ url: "mongodb://localhost:27017/tazweed" }),
+    store: new MongoStore({ url: database.url }),
   })
 );
 
